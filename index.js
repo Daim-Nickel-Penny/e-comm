@@ -11,12 +11,14 @@ const typeDefs = gql`
   }
 
   type Product {
+    id: ID!
     name: String!
     image: String!
     description: String!
     quantity: Int!
     price: Float!
     onSale: Boolean!
+    category: Category
   }
 
   type Category {
@@ -30,10 +32,10 @@ const resolvers = {
     hello: () => {
       return "Hello World";
     },
-    products: () => {
+    products: (parent, args, context) => {
       return productsData;
     },
-    getProduct: (parent, args) => {
+    getProduct: (parent, args, context) => {
       const product = productsData.find((product) => product.id === args.id);
 
       if (!product) return null;
@@ -41,7 +43,7 @@ const resolvers = {
       return product;
     },
     categories: () => {
-      return categories;
+      return categoriesData;
     },
     getCategory: (parent, args, context) => {
       const category = categoriesData.find(
@@ -58,6 +60,15 @@ const resolvers = {
       );
       if (!products) return null;
       return products;
+    },
+  },
+  Product: {
+    category: (parent, args, context) => {
+      const category = categoriesData.find(
+        (category) => category.id === parent.categoryId
+      );
+      if (!category) return null;
+      return category;
     },
   },
 };
