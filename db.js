@@ -1,4 +1,4 @@
-exports.productsData = [
+const products = [
   {
     id: "53a0724c-a416-4cac-ae45-bfaedce1f147",
     name: "Steel Pot",
@@ -91,7 +91,7 @@ exports.productsData = [
   },
 ];
 
-exports.categoriesData = [
+const categories = [
   {
     id: "c01b1ff4-f894-4ef2-b27a-22aacc2fca70",
     name: "Kitchen",
@@ -106,7 +106,7 @@ exports.categoriesData = [
   },
 ];
 
-exports.reviewsData = [
+const reviews = [
   {
     id: "b22da5d4-6a4b-4db5-8ec3-acc228c36260",
     date: "2021-01-01",
@@ -285,3 +285,9 @@ exports.reviewsData = [
     productId: "47bf3941-9c8b-42c0-9c72-7f3985492a5b",
   },
 ];
+
+exports.db = {
+  products,
+  categories,
+  reviews,
+};
