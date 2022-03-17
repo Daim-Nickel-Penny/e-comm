@@ -10,6 +10,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers: {
     Query,
+    Mutation,
     Category,
     Product,
   },
